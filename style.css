@@ -1,0 +1,125 @@
+*{
+    font-family: "Joan", serif;
+    color: white;
+}
+
+/*Mobile First*/
+
+/*Demarking elements
+header, main, aside, footer {
+  border: 2px dashed white;
+}*/
+
+/*General elements*/
+button{
+    background-color: transparent;
+    border: transparent;
+}
+button:active{
+    filter: brightness(0.8);
+}
+
+body{
+    display: grid;
+    grid-template-areas:
+    "header header"
+    "main main"
+    "aside footer";
+    grid-template-columns: 2.5fr 1fr;
+    grid-template-rows: auto 1fr auto;
+
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+    height: 100vh;
+    background-color: #ff5638;
+    text-align: center;
+}
+
+/*Major Sections Styled First*/
+header{
+    grid-area: header;
+    display: flex;
+    justify-content: space-around;
+}
+
+aside{
+    grid-area: aside;
+}
+
+main{
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+}
+
+footer{
+    grid-area: footer;
+}
+
+/*Header Children Styles*/
+.brand{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+.brand img{
+    height: 40px;
+    width: 40px;
+}
+.brand h1{
+    font-size: 1.5rem;
+}
+
+
+/*Navigaton Menu
+Mobile First*/
+nav{
+    position: relative;
+}
+#nav-menu{
+    display: none;
+
+}
+
+
+
+/*Main Children Styles*/
+.timer-display, .timer-countdown, .timer-controls{
+    padding: 0; margin: 0;
+}
+.timer-display img{
+    height: 100px;
+}
+.timer-countdown{
+    font-size: 5rem;
+}
+.timer-controls i{
+    font-size: 40px;
+}
+
+
+/*Aside Children Styles*/
+
+/*Footer Children Styles*/
+
+/*Font Awesome Icons*/
+i{
+}
+
+/*Desktop Version*/
+@media (min-width: 768px) {
+    body{
+        grid-template-areas:
+        "header aside"
+        "main main"
+        "footer footer";
+    }
+    header{
+        flex-direction: row-reverse;
+    }
+}

@@ -4,19 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pomomomo Timer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/brand-logo-flaticons.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Joan&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2a8bcd658f.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- 🌟 Header -->
     <header>
+        
         <div class="brand">
-            <img src="brand_icon.png" alt="Pomomomo Timer Icon" />
+            <img src="images/brand-logo-flaticons.png" alt="Pomomomo Timer Icon" />
             <h1>Pomomomo Timer</h1>
         </div>
         
         <!-- 🍔 Mobile Nav Toggle -->
         <nav>
-            <button> id="nav-toggle" aria-label="Toggle Navigation Menu
-                <img src="burger-nav-icon" alt="Navigation Menu">
+            <button id="nav-toggle" aria-label="Toggle Navigation Menu">
+                <i class="fas fa-bars"></i>
             </button>
 
             <!-- 📂 Navigation Vertical Dropdown Menu -->
@@ -64,15 +71,15 @@
 
                                     <tr>
                                         <!-- ⬅️ Decrease Timer Buttons -->
-                                        <td><button type="button" class="time-adjust" data-action="decrease-large" data-target="minutes">&lt;&lt;</button></td>
-                                        <td><button type="button" class="time-adjust" data-action="decrease-short" data-target="minutes">&lt;</button></td>
+                                        <td><button type="button" class="time-adjust" data-action="decrease-large" data-target="minutes"><i class="fa-solid fa-chevron-left"></i><i class="fa-solid fa-chevron-left"></i></button></td>
+                                        <td><button type="button" class="time-adjust" data-action="decrease-short" data-target="minutes"><i class="fa-solid fa-chevron-left"></i></button></td>
 
                                         <!-- 🕒 Timer Display -->
                                         <td><span id="custom-timer-display">00:00</span></td>
 
                                         <!-- ➕ Increase Timer Buttons -->
-                                        <td><button type="button" class="time-adjust" data-action="increase-short" data-target="minutes">&gt;</button></td>
-                                        <td><button type="button" class="time-adjust" data-action="increase-large" data-target="minutes">&gt;&gt;</button></td>
+                                        <td><button type="button" class="time-adjust" data-action="increase-short" data-target="minutes"><i class="fa-solid fa-chevron-right"></i></button></td>
+                                        <td><button type="button" class="time-adjust" data-action="increase-large" data-target="minutes"><i class="fa-solid fa-chevron-right"></i><i class="fa-solid fa-chevron-right"></i></button></td>
                                     </tr>
 
                                     <tr>
@@ -99,9 +106,9 @@
                  <section class="nav-section" id="social-links">
                     <p class="nav-title">Follow Me</p>
                     <div class="social-icons">
-                        <a href="#"><img src="youtube_icon.png" alt="YouTube"></a>
-                        <a href="#"><img src="github_icon.png" alt="GitHub"></a>
-                        <a href="#"><img src="linkedin_icon.png" alt="LinkedIn"></a>
+                        <a href="#"><i class="fa-brands fa-youtube" title="YouTube"></i></a>
+                        <a href="#"><i class="fa-brands fa-github" title="GitHub"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin" title="LinkedIn"></i></a>
                     </div>
                  </section>
                     
@@ -112,17 +119,21 @@
      <!-- 🧠 Main Timer Section -->
     <main>
         <section class="timer-display">
-            <img src="timer-type.gif" alt="Timer mode indicator">
+            <img src="images/mode-focus.png" alt="Timer mode indicator">
             <p id="countdown" class="timer-countdown">25:00</p>
         </section>
 
         <div class="timer-controls">
+            <button id="pause-btn" class="btn btn-pause">
+                <i class="fa-solid fa-pause pause-condition" title="Pause Button"></i>
+            </button>
+
             <button id="start-btn" class="btn btn-start">
-                <img src="start-button.ong" alt="Start">
+                <i class="fa-solid fa-play start-condition" title="Start Button"></i>
             </button>
 
             <button id="reset-btn" class="btn btn-reset">
-                <img src="reset-button.ong" alt="Reset">
+                <i class="fa-solid fa-rotate-right fa-rotate-180" title="Reset Button"></i>
             </button>
         </div>
     </main>
