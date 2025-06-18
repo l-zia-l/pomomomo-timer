@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomomomo Timer</title>
+</head>
+<body>
+    <!-- 🌟 Header -->
+    <header>
+        <div class="brand">
+            <img src="brand_icon.png" alt="Pomomomo Timer Icon" />
+            <h1>Pomomomo Timer</h1>
+        </div>
+        
+        <!-- 🍔 Mobile Nav Toggle -->
+        <nav>
+            <button> id="nav-toggle" aria-label="Toggle Navigation Menu
+                <img src="burger-nav-icon" alt="Navigation Menu">
+            </button>
+
+            <!-- 📂 Navigation Vertical Dropdown Menu -->
+            <div id="nav-menu" class="nav-dropdown hidden">
+                <section class="nav-section" id="new-timers">
+                    <p class="nav-title">New Timers</p>
+
+                    <!-- ⏱️ Presets -->
+                    <div class="preset-section">
+                        <p class="subheading">Presets</p>
+                        <table class="preset-table">
+                            <tr>
+                                <td class="preset-label">Work</td>
+                                <td class="timer-value" data-type="focus">25</td>
+                                <td class="timer-value" data-type="short">5</td>
+                                <td class="timer-value" data-type="long">10</td>
+                            </tr>
+
+                            <tr>
+                                <td class="preset-label">School</td>
+                                <td class="timer-value" data-type="focus">25</td>
+                                <td class="timer-value" data-type="short">5</td>
+                                <td class="timer-value" data-type="long">10</td>
+                            </tr>
+
+                            <tr>
+                                <td class="preset-label">Hobbies</td>
+                                <td class="timer-value" data-type="focus">25</td>
+                                <td class="timer-value" data-type="short">5</td>
+                                <td class="timer-value" data-type="long">10</td>
+                            </tr>
+                        </table>  
+                    </div>
+
+                    <!-- 🎛️ Custom Timers -->
+                     <div class="custom-section">
+                        <p class="subheading">Custom</p>
+                            <form action="#" id="custom-timer-form">
+                                <!-- 🔤 Timer Name Input -->
+                                 <label for="custom-timer-name" class="visually-hidden">Custom Timer Name</label>
+                                 <input type="text" id="custom-timer-name" name="customTimerName" placeholder="Name">
+                                
+                                <!-- ⏱️ Timer Control Table -->
+                                 <table class="custom-timer-table">
+
+                                    <tr>
+                                        <!-- ⬅️ Decrease Timer Buttons -->
+                                        <td><button type="button" class="time-adjust" data-action="decrease-large" data-target="minutes">&lt;&lt;</button></td>
+                                        <td><button type="button" class="time-adjust" data-action="decrease-short" data-target="minutes">&lt;</button></td>
+
+                                        <!-- 🕒 Timer Display -->
+                                        <td><span id="custom-timer-display">00:00</span></td>
+
+                                        <!-- ➕ Increase Timer Buttons -->
+                                        <td><button type="button" class="time-adjust" data-action="increase-short" data-target="minutes">&gt;</button></td>
+                                        <td><button type="button" class="time-adjust" data-action="increase-large" data-target="minutes">&gt;&gt;</button></td>
+                                    </tr>
+
+                                    <tr>
+                                        <!-- 🔢 Adjustment Buttons -->
+                                        <td><button type="button" class="time-adjust" data-amount="-10" data-target="minutes">-10</button></td>
+                                        <td><button type="button" class="time-adjust" data-amount="-5" data-target="minutes">-5</button></td>
+                                        <td></td>
+                                        <td><button type="button" class="time-adjust" data-amount="5" data-target="minutes">5</button></td>
+                                        <td><button type="button" class="time-adjust" data-amount="10" data-target="minutes">10</button></td>
+                                    </tr>
+                                    
+                                </table>
+
+                                <!-- 🛠️ Action Buttons -->
+                                <div class="form-buttons">
+                                    <button type="reset" class="btn-reset">Reset</button>
+                                    <button type="submit" class="btn-save">Save</button>
+                                </div>
+                            </form>
+                     </div>
+                </section>
+
+                <!-- 🔗 Social Links -->
+                 <section class="nav-section" id="social-links">
+                    <p class="nav-title">Follow Me</p>
+                    <div class="social-icons">
+                        <a href="#"><img src="youtube_icon.png" alt="YouTube"></a>
+                        <a href="#"><img src="github_icon.png" alt="GitHub"></a>
+                        <a href="#"><img src="linkedin_icon.png" alt="LinkedIn"></a>
+                    </div>
+                 </section>
+                    
+            </div>
+        </nav>
+    </header>
+
+     <!-- 🧠 Main Timer Section -->
+    <main>
+        <section class="timer-display">
+            <img src="timer-type.gif" alt="Timer mode indicator">
+            <p id="countdown" class="timer-countdown">25:00</p>
+        </section>
+
+        <div class="timer-controls">
+            <button id="start-btn" class="btn btn-start">
+                <img src="start-button.ong" alt="Start">
+            </button>
+
+            <button id="reset-btn" class="btn btn-reset">
+                <img src="reset-button.ong" alt="Reset">
+            </button>
+        </div>
+    </main>
+
+    <!-- 🧮 Session Tracking -->
+    <aside id="session-info">
+        <div class="session-counter"></div>
+        <p id="session-label">Session Counter</p>
+    </aside>
+
+    <!-- 📜 Footer -->
+    <footer>
+        <p>Powered by &copy; ZiA</p>
+    </footer>
+
+</body>
+</html>
