@@ -16,7 +16,7 @@
 
 ## 🛠️ Tech Stack
 - HTML5 (Semantic)
-- CSS3 (Coming Soon)
+- CSS3 (35% Complete)
 - JavaScript (Coming Soon)
 - Figma (Design / Mockups)
 
