@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/2a8bcd658f.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="timer-progress-background"></div>
+<div id="timer-progress-background"></div>
         <!-- 🌟 Header -->
     <header>
         
@@ -120,28 +120,32 @@
      <!-- 🧠 Main Timer Section -->
     <main>
         <section class="timer-display">
-            <img src="images/mode-focus.png" alt="Timer mode indicator">
-            <p id="countdown" class="timer-countdown">25:00</p>
+            <div aria-label="Session State" class="session-icon"></div>
+            <p id="countdown" class="timer-countdown"></p>
         </section>
 
         <div class="timer-controls">
-            <button id="pause-btn" class="btn btn-pause">
+            <button id="pause-btn" class="btn btn-pause" onclick="pauseTimer()" >
                 <i class="fa-solid fa-pause pause-condition" title="Pause Button"></i>
             </button>
 
-            <button id="start-btn" class="btn btn-start">
+            <button id="start-btn" class="btn btn-start" onclick="startTimer()">
                 <i class="fa-solid fa-play start-condition" title="Start Button"></i>
             </button>
 
-            <button id="reset-btn" class="btn btn-reset">
+            <button id="reset-btn" class="btn btn-reset" onclick="resetTimer()">
                 <i class="fa-solid fa-rotate-right fa-rotate-180" title="Reset Button"></i>
             </button>
         </div>
+
+        <dialog id="popup">
+            🎉 Congrats! Click Reset to start again.
+        </dialog>
     </main>
 
     <!-- 🧮 Session Tracking -->
     <aside id="session-info">
-        <div class="session-counter"></div>
+        <div id="session-counter"></div>
         <p id="session-label">Session Counter</p>
     </aside>
 
@@ -149,5 +153,7 @@
     <footer>
         <p>Powered by &copy; ZiA</p>
     </footer>
+
+    <script src="index.js"></script>
 </body>
 </html>
