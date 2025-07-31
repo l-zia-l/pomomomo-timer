@@ -24,10 +24,10 @@
 
 ## 🧪 Current Status
 > ✅ Wireframes  
-> ✅ Semantic HTML
-> ✅ JS Timer Logic
+> ✅ Semantic HTML  
+> ✅ JS Timer Logic  
 > 🔄 Styling in progress  
-> 🔄 Customization Menu CSS & JS integration
+> 🔄 Customization Menu CSS & JS integration  
 > 🚀 Final deploy to Netlify by ~~July 1st~~ August 10th, 2025
 
 ---
