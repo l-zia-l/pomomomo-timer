@@ -1,6 +1,7 @@
 // Final working code - Just right
 
 //DOM variables
+//Main Page
 let background_image = document.getElementById("timer-progress-background");
 let countdown_text = document.getElementById("countdown");
 let pause_btn = document.getElementById("pause-btn");
@@ -8,10 +9,24 @@ let start_btn = document.getElementById("start-btn");
 let reset_btn = document.getElementById("reset-btn");
 let dialog = document.getElementById("popup");
 
+//Nav Menu
+let nav_menu = document.getElementById("nav-menu");
+let menu_toggle = document.getElementById("nav-toggle");
+let background_timeout = document.getElementById("timeout-nav-screen");
+let preset_label = document.getElementsByClassName("subheading")[0];
+let custom_label = document.getElementsByClassName("subheading")[1];
+let preset_menu = document.getElementById("preset-table");
+let custom_menu = document.getElementById("custom-timer-form");
+let socials_menu = document.getElementById("social-links");
+
+
 //Foundation variables
 let countdown = 1;
 let interval = null;
 let countdown_counter = countdown * 1000; // convert to milliseconds and for how much time is left
+let focus_time = 5 * 1000;
+let short_break = 3 * 1000;
+let long_break = 4 * 1000;
 countdown_text.textContent = formatTime(countdown_counter);
 
 start_btn.style.display = "inline";
@@ -26,7 +41,19 @@ function formatTime(ms) {
     return `${min < 10 ? "0" : ""}${min}:${sec < 10 ? "0" : ""}${sec}`;
 }
 
-//Synchronization issues fixed with a separate timing function
+//Session Tracker
+const pomodoroCycle = [
+  { type: "work", duration: 25 * 60 * 1000 },  // 25 mins
+  { type: "shortBreak", duration: 5 * 60 * 1000 },
+  { type: "work", duration: 25 * 60 * 1000 },
+  { type: "shortBreak", duration: 5 * 60 * 1000 },
+  { type: "work", duration: 25 * 60 * 1000 },
+  { type: "shortBreak", duration: 5 * 60 * 1000 },
+  { type: "work", duration: 25 * 60 * 1000 },
+  { type: "longBreak", duration: 20 * 60 * 1000 }
+];
+
+//Timer Buttons
 
 let startTime;
 let animationFrameId;
@@ -40,9 +67,9 @@ function updateTimer() {
     if (timeLeft <= 0) {
         countdown_text.textContent = "00:00";
         dialog.style.display = "block";
-        addSessionDot(currentSessionType);
         pause_btn.style.display = "none";
         start_btn.style.display = "none";
+        addSessionDot(currentSessionType);
         isRunning = false;
         cancelAnimationFrame(animationFrameId);
         return;
@@ -103,49 +130,38 @@ function resetTimer() {
     background_image.style.animation = null;
 };
 
-//Session Tracker
-let sessionCount = 0;
-let currentSessionType = "work";
-const sessionIcon = document.querySelector(".session-icon");
-
-function handleSessionEnd() {
-  addSessionDot(currentSessionType);
-
-  const justFinishedWork = currentSessionType === "work";
-  if (justFinishedWork) sessionCount++;
-
-  currentSessionType = justFinishedWork
-    ? (sessionCount % 4 === 0 ? "longBreak" : "shortBreak")
-    : "work";
-
-  updateSessionVisuals(currentSessionType);
-}
-
-function updateSessionVisuals(type){
-    const colors = {
-        work: "white",
-        shortBreak: "aqua",
-        longBreak: "yellow"
-    };
-
-    sessionIcon.style.backgroundColor = colors[type] || "gray";
-}
-
-function addSessionDot(type){
-    const tracker = document.getElementById("session-counter");
-    const dot = document.createElement("div");
-   dot.classList.add("session-dot");
-
-   const colors = {
-        work: "white",
-        shortBreak: "aqua",
-        longBreak: "yellow"
-   };
-
-   dot.style.backgroundColor = colors[type] || "gray";
-   tracker.appendChild(dot);
+//Reusable Hide Element Toggle Function
+function toggleHidden(element){
+    element.classList.toggle("hidden");
 };
 
+//Customization Panel - Navigation Menu
+
+nav_menu.classList.add("hidden");
+menu_toggle.onclick = () => {
+    toggleHidden(nav_menu);
+    background_timeout.classList.toggle("timeout-set")
+};
+background_timeout.onclick = () => {
+  nav_menu.classList.add("hidden");
+  background_timeout.classList.remove("timeout-set");
+};
+
+//Customization Panel - Main Buttons (Timer, Follow)
+preset_menu.classList.add("hidden");
+custom_menu.classList.add("hidden");
+
+preset_label.onclick = () =>{
+    toggleHidden(preset_menu);
+    toggleHidden(socials_menu);
+    toggleHidden(custom_label)
+}
+
+custom_label.onclick = () =>{
+    toggleHidden(custom_menu);
+    toggleHidden(socials_menu);
+    toggleHidden(preset_label);
+}
 /*First Draft - Error: Timer too slow
 
 //DOM variables

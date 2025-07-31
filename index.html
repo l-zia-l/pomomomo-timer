@@ -13,6 +13,7 @@
 </head>
 <body>
 <div id="timer-progress-background"></div>
+<div id="timeout-nav-screen"></div>
         <!-- 🌟 Header -->
     <header>
         
@@ -21,21 +22,21 @@
             <h1>Pomomomo Timer</h1>
         </div>
         
+        <button id="nav-toggle" aria-label="Toggle Navigation Menu">
+            <i class="fas fa-bars"></i>
+        </button>
         <!-- 🍔 Mobile Nav Toggle -->
         <nav>
-            <button id="nav-toggle" aria-label="Toggle Navigation Menu">
-                <i class="fas fa-bars"></i>
-            </button>
 
             <!-- 📂 Navigation Vertical Dropdown Menu -->
-            <div id="nav-menu" class="nav-dropdown hidden">
+            <div id="nav-menu" class="nav-dropdown">
                 <section class="nav-section" id="new-timers">
-                    <p class="nav-title">New Timers</p>
+                    <p class="nav-title">New Timer</p>
 
                     <!-- ⏱️ Presets -->
                     <div class="preset-section">
                         <p class="subheading">Presets</p>
-                        <table class="preset-table">
+                        <table id="preset-table" class="preset-table">
                             <tr>
                                 <td class="preset-label">Work</td>
                                 <td class="timer-value" data-type="focus">25</td>
