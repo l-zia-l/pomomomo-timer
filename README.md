@@ -10,24 +10,25 @@
 - Presets for Work, School, Hobbies
 - Mobile-first responsive layout
 - Semantic, accessible HTML
-- Visual countdown & start/reset controls
+- ✅ Visual countdown & start/reset controls
 
 ---
 
 ## 🛠️ Tech Stack
 - HTML5 (Semantic)
-- CSS3 (35% Complete)
-- JavaScript (Coming Soon)
+- CSS3 (50% Complete)
+- JavaScript (60%)
 - Figma (Design / Mockups)
 
 ---
 
 ## 🧪 Current Status
 > ✅ Wireframes  
-> ✅ Semantic HTML  
+> ✅ Semantic HTML
+> ✅ JS Timer Logic
 > 🔄 Styling in progress  
-> 🧠 JavaScript logic next  
-> 🚀 Final deploy to Netlify by July 1st, 2025
+> 🔄 Customization Menu CSS & JS integration
+> 🚀 Final deploy to Netlify by ~~July 1st~~ August 10th, 2025
 
 ---
 
