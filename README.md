@@ -38,4 +38,5 @@ Open an issue or reach out via LinkedIn -> https://www.linkedin.com/in/analetizi
 ---
 
 ## 🖤 Built with love by ZiA
+© 2026 ZiA. All Rights Reserved. This code is for educational and portfolio purposes only. It may not be used, modified, or distributed for commercial purposes without permission.
 

@@ -19,8 +19,9 @@ let preset_menu = document.getElementById("preset-table");
 let custom_menu = document.getElementById("custom-timer-form");
 let socials_menu = document.getElementById("social-links");
 
+
 //Foundation variables
-let countdown = 60;
+let countdown = 1;
 let interval = null;
 let countdown_counter = countdown * 1000; // convert to milliseconds and for how much time is left
 let focus_time = 5 * 1000;
