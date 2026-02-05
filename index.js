@@ -2,8 +2,10 @@
 
 //DOM variables
 //Main Page
-let background_image = document.getElementById("timer-progress-background");
+let background_slider = document.getElementById("timer-progress-background");
 let countdown_text = document.getElementById("countdown");
+let session_icon = document.querySelector('.session-icon');
+const session_container = document.getElementById("session-counter");
 let pause_btn = document.getElementById("pause-btn");
 let start_btn = document.getElementById("start-btn");
 let reset_btn = document.getElementById("reset-btn");
@@ -19,19 +21,48 @@ let preset_menu = document.getElementById("preset-table");
 let custom_menu = document.getElementById("custom-timer-form");
 let socials_menu = document.getElementById("social-links");
 
+//Helper: Resets buttons
+function resetControls() {
+    start_btn.style.display = "inline";
+    pause_btn.style.display = "none";
+    dialog.style.display = "none";
+}
+
+//Helper: Resets background slider
+function resetBackground(){
+    background_slider.style.animation = "none";
+    void background_slider.offsetWidth;
+    background_slider.style.animation = null;
+}
+
+//State Management
+const MODES = {
+    focus: { 
+        time: 0.3 * 60 * 1000,
+        label: "Focus Mode",
+        color: "#ff5638ff"
+    },
+    short: { 
+        time: 0.1 * 60 * 1000,
+        label: "Short Break",
+        color: "#9c5313ff"
+    },
+    long: { 
+        time: 0.2 * 60 * 1000,
+        label: "Long Break", 
+        color: "#17325aff"
+    }
+};
 
 //Foundation variables
-let countdown = 1;
-let interval = null;
-let countdown_counter = countdown * 1000; // convert to milliseconds and for how much time is left
-let focus_time = 5 * 1000;
-let short_break = 3 * 1000;
-let long_break = 4 * 1000;
+let currentMode = "focus";
+let sessionsCompleted = 0; 
+const SESSIONS_BEFORE_LONG_BREAK = 2;
+let countdown_counter = MODES[currentMode].time; 
 countdown_text.textContent = formatTime(countdown_counter);
 
-start_btn.style.display = "inline";
-pause_btn.style.display = "none";
-dialog.style.display = "none";
+//Change these into a function
+resetControls();
 
 //Time renderer on the page = seconds to MM:SS
 function formatTime(ms) {
@@ -41,20 +72,26 @@ function formatTime(ms) {
     return `${min < 10 ? "0" : ""}${min}:${sec < 10 ? "0" : ""}${sec}`;
 }
 
-//Session Tracker
-const pomodoroCycle = [
-  { type: "work", duration: 25 * 60 * 1000 },  // 25 mins
-  { type: "shortBreak", duration: 5 * 60 * 1000 },
-  { type: "work", duration: 25 * 60 * 1000 },
-  { type: "shortBreak", duration: 5 * 60 * 1000 },
-  { type: "work", duration: 25 * 60 * 1000 },
-  { type: "shortBreak", duration: 5 * 60 * 1000 },
-  { type: "work", duration: 25 * 60 * 1000 },
-  { type: "longBreak", duration: 20 * 60 * 1000 }
-];
+//Switch the state of the app
+function switchMode(newMode) {
+    currentMode = newMode;
+    
+    countdown_counter = MODES[newMode].time;
+    countdown_text.textContent = formatTime(countdown_counter);
+    
+    session_icon.textContent = MODES[newMode].label;
+
+    background_slider.style.backgroundColor = MODES[newMode].color;
+
+    resetControls();
+    resetBackground();
+    
+    //Log it (for debugging)
+    console.log(`Switched to ${newMode}`);
+}
+
 
 //Timer Buttons
-
 let startTime;
 let animationFrameId;
 let isRunning = false;
@@ -65,18 +102,49 @@ function updateTimer() {
     const timeLeft = countdown_counter - elapsed;
 
     if (timeLeft <= 0) {
-        countdown_text.textContent = "00:00";
-        dialog.style.display = "block";
-        pause_btn.style.display = "none";
-        start_btn.style.display = "none";
-        addSessionDot(currentSessionType);
         isRunning = false;
         cancelAnimationFrame(animationFrameId);
+        countdown_text.textContent = "00:00";
+
+        //Sound
+
+        if (currentMode === "focus") {
+            sessionsCompleted++;
+            updateSessionVisuals(); 
+            
+            if (sessionsCompleted >= SESSIONS_BEFORE_LONG_BREAK) {
+                sessionsCompleted = 0; // Reset the cycle
+                switchMode("long");
+            } else {
+                switchMode("short");
+            }
+            
+            // Show message for break
+            dialog.innerText = "Nice work! Time for a break.";
+            dialog.style.display = "block";
+
+        } else {
+            switchMode("focus");
+            
+            // Show message for work
+            dialog.innerText = "Break over! Let's focus.";
+            dialog.style.display = "block";
+        }
+
+        //resetControls();
         return;
     }
 
     countdown_text.textContent = formatTime(timeLeft);
     animationFrameId = requestAnimationFrame(updateTimer);
+}
+
+function updateSessionVisuals() {
+    const dot = document.createElement("div");
+    dot.classList.add("session-dot");
+    dot.style.backgroundColor = "white";
+    
+    session_container.appendChild(dot);
 }
 
 
@@ -91,8 +159,19 @@ function startTimer() {
     dialog.style.display = "none";
 
     startTime = Date.now();
-    background_image.style.animation = `backgroundImage ${countdown}s linear`;
-    background_image.style.animationPlayState = "running";
+    const durationInSeconds = MODES[currentMode].time / 1000;
+    
+    let animationName = "slideOutLeft";
+    
+    if (currentMode !== "focus") {
+        animationName = "slideInRight";
+        
+        background_slider.style.transform = "translateX(-100%)";
+    }
+
+    background_slider.style.animation = `${animationName} ${durationInSeconds}s linear forwards`;
+    background_slider.style.animationPlayState = "running";
+    
     animationFrameId = requestAnimationFrame(updateTimer);
 };
 
@@ -107,9 +186,8 @@ function pauseTimer() {
 
     cancelAnimationFrame(animationFrameId);
 
-    start_btn.style.display = "inline";
-    pause_btn.style.display = "none";
-    background_image.style.animationPlayState = "paused";
+    resetControls();
+    background_slider.style.animationPlayState = "paused";
 };
 
 
@@ -117,17 +195,14 @@ function pauseTimer() {
 function resetTimer() {
     cancelAnimationFrame(animationFrameId);
     isRunning = false;
-    countdown_counter = countdown * 1000;
 
+    countdown_counter = MODES[currentMode].time;
     countdown_text.textContent = formatTime(countdown_counter);
 
-    start_btn.style.display = "inline";
-    pause_btn.style.display = "none";
-    dialog.style.display = "none";
-
-    background_image.style.animation = "none";
-    void background_image.offsetWidth;
-    background_image.style.animation = null;
+    resetControls();
+    resetBackground();
+    
+    background_slider.style.transform = "translateX(0)";
 };
 
 //Reusable Hide Element Toggle Function
