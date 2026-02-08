@@ -32,11 +32,21 @@
 
 ---
 
-## 📬 Feedback?
+## Feedback?
 Open an issue or reach out via LinkedIn -> https://www.linkedin.com/in/analetizia-simono-18b551346/
 
 ---
 
-## 🖤 Built with love by ZiA
+## Support the Vibe
+If Scrorkie helped you nail that one difficult solo or made your at home, practice session a little easier, consider supporting the journey:
+
+* [Buy Me a Coffee](https://buymeacoffee.com/l_zia_l)
+* [Check out my other creations](https://linktr.ee/zia.stuff)
+
+---
+
+## The Fine Print
+
 © 2026 ZiA. All Rights Reserved. This code is for educational and portfolio purposes only. It may not be used, modified, or distributed for commercial purposes without permission.
 
+**Powered by ZiA**
