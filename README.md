@@ -2,6 +2,8 @@
 
 **Pomomomo** is a clean, customizable Pomodoro-style timer web app designed for focus, fun, and flow, and built to be both mobile and desktop-friendly. Made with semantic HTML, soon to include custom JavaScript logic. 👩‍💻💅
 
+[Try it out here](https://l-zia-l.github.io/pomomomo-timer/)
+
 ---
 
 ## 🚀 Features (in-progress)
@@ -38,7 +40,7 @@ Open an issue or reach out via LinkedIn -> https://www.linkedin.com/in/analetizi
 ---
 
 ## Support the Vibe
-If Scrorkie helped you nail that one difficult solo or made your at home, practice session a little easier, consider supporting the journey:
+If Pomomomo helped you study, do chores, or just organize your time better, consider supporting the journey:
 
 * [Buy Me a Coffee](https://buymeacoffee.com/l_zia_l)
 * [Check out my other creations](https://linktr.ee/zia.stuff)
@@ -50,3 +52,4 @@ If Scrorkie helped you nail that one difficult solo or made your at home, practi
 © 2026 ZiA. All Rights Reserved. This code is for educational and portfolio purposes only. It may not be used, modified, or distributed for commercial purposes without permission.
 
 **Powered by ZiA**
+
